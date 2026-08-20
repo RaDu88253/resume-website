@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name &mdash; Portfolio &amp; Resume</title>
+    <meta name="description" content="Resume and portfolio of Your Name">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Floating Action Toolbar -->
+    <aside class="action-toolbar" aria-label="Page Actions">
+        <a href="resume.pdf" class="action-btn pdf-btn" download aria-label="Download Resume PDF"><svg class="action-btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg><span>Download PDF</span></a><button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Color Theme" title="Toggle dark/light theme">
+        <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+    </aside>
+
+    <div class="portfolio-container">
+        <!-- Hero Header -->
+        <header class="portfolio-header">
+            <div class="header-main">
+                <div class="avatar-wrapper">
+            <img src="photo.jpg" alt="Your Name" class="avatar-img" />
+        </div>
+                <div class="header-intro">
+                    <h1 class="hero-name">Your Name</h1>
+                    <div class="contact-badges-list">
+                        <a href="tel:+40700000000" class="contact-pill" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+40 700 000 000</span></a>
+        <a href="mailto:you@email.com" class="contact-pill" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span>you@email.com</span></a>
+        <a href="https://linkedin.com/in/yourhandle" class="contact-pill" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg><span>linkedin.com/in/yourhandle</span></a>
+        <a href="https://github.com/yourhandle" class="contact-pill" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg><span>github.com/yourhandle</span></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Resume Content -->
+        <main id="main-content" class="portfolio-main">
+            <section class="resume-section" id="education">
+    <div class="section-title-wrapper">
+        <div class="section-icon-box"><svg class="section-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
+        <h2 class="section-heading">Education</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="section-body">
+        <article class="entry-card subheading-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="entry-title">Universitatea Politehnica din București (UNSTPB)</h3>
+                <div class="entry-subtitle">B.Eng. in Electronics, Telecommunications and Information Technology</div>
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Sep. 2022 &ndash; Jun. 2026</span></span>
+            <span class="meta-badge loc-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>Bucharest, Romania</span></span></div>
+        </div>
+        
+    </article>
+    <article class="entry-card subheading-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="entry-title">Erasmus Exchange &ndash; [University Name]</h3>
+                <div class="entry-subtitle">Exchange Semester, Computer Science</div>
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>[Month Year] &ndash; [Month Year]</span></span>
+            <span class="meta-badge loc-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>[City, Country]</span></span></div>
+        </div>
+        
+    </article>
+    </div>
+</section>
+
+<section class="resume-section" id="experience">
+    <div class="section-title-wrapper">
+        <div class="section-icon-box"><svg class="section-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <h2 class="section-heading">Experience</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="section-body">
+        <article class="entry-card subheading-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="entry-title">Job Title</h3>
+                <div class="entry-subtitle">Company Name</div>
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>[Month Year] &ndash; [Month Year]</span></span>
+            <span class="meta-badge loc-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>[City, Country / Remote]</span></span></div>
+        </div>
+        <ul class="bullet-list">
+            <li>Bullet describing one concrete achievement, with a metric if possible.</li>
+            <li>Second bullet &ndash; comment out any single line to shorten this entry.</li>
+            <li>Third bullet, e.g. tools/protocols used (BLE, LoRa, OpenThread/Matter, etc.).</li>
+        </ul>
+    </article>
+    <article class="entry-card subheading-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="entry-title">Job Title</h3>
+                <div class="entry-subtitle">Company Name</div>
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>[Month Year] &ndash; [Month Year]</span></span>
+            <span class="meta-badge loc-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>[City, Country / Remote]</span></span></div>
+        </div>
+        <ul class="bullet-list">
+            <li>Bullet one.</li>
+            <li>Bullet two.</li>
+        </ul>
+    </article>
+    </div>
+</section>
+
+<section class="resume-section" id="projects">
+    <div class="section-title-wrapper">
+        <div class="section-icon-box"><svg class="section-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></div>
+        <h2 class="section-heading">Projects</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="section-body">
+        <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>Project Name</strong></h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>[Month Year]</span></span></div>
+        </div>
+        <div class="tech-tags"><span class="tech-pill">C</span><span class="tech-pill">FreeRTOS</span><span class="tech-pill">BLE</span></div>
+        <ul class="bullet-list">
+            <li>One line describing the project goal and your role.</li>
+            <li>One line describing a specific technical result or metric.</li>
+        </ul>
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>Project Name</strong></h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>[Month Year]</span></span></div>
+        </div>
+        <div class="tech-tags"><span class="tech-pill">Python</span><span class="tech-pill">LoRa</span><span class="tech-pill">Embedded Linux</span></div>
+        <ul class="bullet-list">
+            <li>Bullet one.</li>
+            <li>Bullet two.</li>
+        </ul>
+    </article>
+    </div>
+</section>
+
+<section class="resume-section" id="technical-skills">
+    <div class="section-title-wrapper">
+        <div class="section-icon-box"><svg class="section-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="M2 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="M12 18v4"/><path d="m16.24 16.24 2.83 2.83"/><path d="M18 12h4"/><path d="m16.24 7.76 2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h2 class="section-heading">Technical Skills</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="section-body">
+        <div class="skills-grid">
+        <div class="skill-category-card">
+            <h3 class="skill-category-name">Languages</h3>
+            <div class="skill-tags-group">
+                <span class="skill-tag">C</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Verilog/VHDL</span>
+            </div>
+        </div><div class="skill-category-card">
+            <h3 class="skill-category-name">Embedded / Protocols</h3>
+            <div class="skill-tags-group">
+                <span class="skill-tag">FreeRTOS</span>
+            <span class="skill-tag">BLE</span>
+            <span class="skill-tag">LoRa</span>
+            <span class="skill-tag">OpenThread</span>
+            <span class="skill-tag">Matter</span>
+            <span class="skill-tag">I2C</span>
+            <span class="skill-tag">SPI</span>
+            <span class="skill-tag">UART</span>
+            </div>
+        </div><div class="skill-category-card">
+            <h3 class="skill-category-name">Tools</h3>
+            <div class="skill-tags-group">
+                <span class="skill-tag">Git</span>
+            <span class="skill-tag">KiCad</span>
+            <span class="skill-tag">Oscilloscope/Logic Analyzer</span>
+            <span class="skill-tag">Linux</span>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section class="resume-section" id="awards-amp-certifications">
+    <div class="section-title-wrapper">
+        <div class="section-icon-box"><svg class="section-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <h2 class="section-heading">Awards &amp; Certifications</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="section-body">
+        <div class="item-row">
+        <div class="item-bullet-icon">&bull;</div>
+        <div class="item-text">Award or certification, one per line.</div>
+    </div>
+    </div>
+</section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="portfolio-footer">
+            <p>&copy; <span id="year"></span> Your Name. Built with <a href="https://github.com/RaDu88253/easy-resume" target="_blank" rel="noopener noreferrer">Easy Resume</a>.</p>
+        </footer>
+    </div>
+
+    <!-- Theme & Year Script -->
+    <script>
+        // Automatic Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Theme Toggle Script
+        (function() {
+            const toggleBtn = document.getElementById('theme-toggle');
+            if (!toggleBtn) return;
+
+            function getInitialTheme() {
+                const saved = localStorage.getItem('theme');
+                if (saved) return saved;
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark-theme');
+                    document.documentElement.classList.remove('light-theme');
+                } else {
+                    document.documentElement.classList.add('light-theme');
+                    document.documentElement.classList.remove('dark-theme');
+                }
+                localStorage.setItem('theme', theme);
+            }
+
+            const current = getInitialTheme();
+            applyTheme(current);
+
+            toggleBtn.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.contains('dark-theme');
+                applyTheme(isDark ? 'light' : 'dark');
+            });
+
+            // Listen for OS preference changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    applyTheme(e.matches ? 'dark' : 'light');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
