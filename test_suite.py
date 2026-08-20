@@ -1,6 +1,7 @@
 import io
 import os
 import time
+import tempfile
 import unittest
 from unittest.mock import patch, MagicMock
 from pathlib import Path
@@ -14,7 +15,9 @@ from build import (
     generate_html,
     check_and_compile_pdf,
     clean_latex_aux_files,
-    check_pdf_staleness
+    check_pdf_staleness,
+    find_default_profile_picture,
+    normalize_picture_path
 )
 
 class TestResumeParser(unittest.TestCase):
@@ -125,6 +128,14 @@ class TestResumeParser(unittest.TestCase):
         html_without_pic = generate_html(data, profile_pic=None)
         self.assertNotIn('class="avatar-img"', html_without_pic)
 
+    def test_profile_picture_url_encoding(self):
+        data = {
+            "header": {"name": "Alex Smith", "contacts": []},
+            "sections": []
+        }
+        html_with_spaces = generate_html(data, profile_pic="images/My Photo.jpg")
+        self.assertIn('src="images/My%20Photo.jpg"', html_with_spaces)
+
     def test_no_print_button_rendered(self):
         data = {
             "header": {"name": "Alex Smith", "contacts": []},
@@ -192,7 +203,7 @@ class TestResumeParser(unittest.TestCase):
         pdf_path = MagicMock()
         pdf_path.name = "resume.pdf"
         pdf_path.exists.return_value = True
-        pdf_path.stat.return_value = MagicMock(st_mtime=500) # PDF is older than tex
+        pdf_path.stat.return_value = MagicMock(st_mtime=500)
         
         with patch("sys.stderr", stderr_capture):
             check_pdf_staleness(tex_path, pdf_path)
@@ -200,6 +211,40 @@ class TestResumeParser(unittest.TestCase):
         warning_msg = stderr_capture.getvalue()
         self.assertIn("was modified more recently than", warning_msg)
         self.assertIn("Overleaf", warning_msg)
+
+    def test_find_default_profile_picture_cases(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            base = Path(temp_dir)
+            
+            # Case 1: PozaProfil.JPG
+            (base / "PozaProfil.JPG").write_text("image")
+            pic = find_default_profile_picture(base)
+            self.assertEqual(pic, "PozaProfil.JPG")
+            
+            # Case 2: Subfolder images/my_avatar.png
+            (base / "PozaProfil.JPG").unlink()
+            (base / "images").mkdir()
+            (base / "images" / "my_avatar.png").write_text("image")
+            pic = find_default_profile_picture(base)
+            self.assertEqual(pic, "images/my_avatar.png")
+
+    def test_normalize_picture_path(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            base = Path(temp_dir)
+            (base / "assets").mkdir()
+            (base / "assets" / "pic.png").write_text("image")
+            
+            # Normalization of backslashes
+            rel = normalize_picture_path(r"assets\pic.png", base)
+            self.assertEqual(rel, "assets/pic.png")
+            
+            # External image copying
+            with tempfile.TemporaryDirectory() as ext_dir:
+                ext_file = Path(ext_dir) / "external.jpg"
+                ext_file.write_text("image")
+                copied = normalize_picture_path(str(ext_file), base)
+                self.assertEqual(copied, "external.jpg")
+                self.assertTrue((base / "external.jpg").exists())
 
 if __name__ == "__main__":
     unittest.main()

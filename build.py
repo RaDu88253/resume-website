@@ -5,14 +5,18 @@ build.py - LaTeX Resume to Modern HTML Portfolio Builder
 Reads a resume written in LaTeX (such as Jake's Resume format) and generates
 a modern, responsive web portfolio (index.html) with style.css.
 Automatically checks for the 'pdflatex' utility and compiles the PDF if available,
-cleans auxiliary LaTeX files, and warns the user if resume.pdf is outdated.
+cleans auxiliary LaTeX files, detects and normalizes profile pictures for GitHub Pages,
+and warns the user if resume.pdf is outdated.
 """
 
+import os
 import re
 import sys
+import html
 import shutil
 import argparse
 import subprocess
+import urllib.parse
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 
@@ -655,7 +659,9 @@ def generate_html(data: Dict[str, Any], css_href: str = "style.css", profile_pic
     # Action toolbar (PDF download & theme toggle)
     actions_html = []
     if pdf_path:
-        actions_html.append(f'<a href="{pdf_path}" class="action-btn pdf-btn" download aria-label="Download Resume PDF">{ICONS["download"]}<span>Download PDF</span></a>')
+        # URL quote PDF link preserving slashes
+        pdf_url = "/".join([urllib.parse.quote(part) for part in pdf_path.replace("\\", "/").split("/")])
+        actions_html.append(f'<a href="{pdf_url}" class="action-btn pdf-btn" download aria-label="Download Resume PDF">{ICONS["download"]}<span>Download PDF</span></a>')
     
     actions_html.append(f'''<button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Color Theme" title="Toggle dark/light theme">
         {ICONS["sun"]}
@@ -665,8 +671,9 @@ def generate_html(data: Dict[str, Any], css_href: str = "style.css", profile_pic
     # Profile picture / Avatar
     avatar_html = ""
     if profile_pic:
+        pic_url = "/".join([urllib.parse.quote(part) for part in profile_pic.replace("\\", "/").split("/")])
         avatar_html = f'''<div class="avatar-wrapper">
-            <img src="{profile_pic}" alt="{name}" class="avatar-img" />
+            <img src="{pic_url}" alt="{name}" class="avatar-img" onerror="this.onerror=null; this.parentElement.style.display=\'none\';" />
         </div>'''
     
     # Contacts
@@ -901,18 +908,85 @@ def generate_html(data: Dict[str, Any], css_href: str = "style.css", profile_pic
 '''
     return html_doc
 
+def normalize_picture_path(picture: str, base_dir: Path) -> str:
+    """
+    Ensure the profile picture is properly located within base_dir
+    and return a clean web-ready relative URL path (forward slashes, no leading slash).
+    If the image is located outside base_dir, copy it into base_dir so it is included in deployments.
+    """
+    pic_path = Path(picture)
+    
+    # If absolute or not inside base_dir, check if it exists and copy into base_dir
+    if pic_path.is_absolute() or not (base_dir / pic_path).exists():
+        if pic_path.exists():
+            dest_name = pic_path.name
+            dest_path = base_dir / dest_name
+            if dest_path.resolve() != pic_path.resolve():
+                shutil.copy2(pic_path, dest_path)
+            return dest_name
+        elif (base_dir / pic_path).exists():
+            pic_path = base_dir / pic_path
+        else:
+            return pic_path.name.replace("\\", "/").lstrip("/")
+            
+    # Compute relative path from base_dir with forward slashes
+    try:
+        resolved_pic = (base_dir / pic_path).resolve() if not pic_path.is_absolute() else pic_path.resolve()
+        resolved_base = base_dir.resolve()
+        rel_path = resolved_pic.relative_to(resolved_base)
+        rel_str = str(rel_path).replace("\\", "/").lstrip("/")
+        return rel_str
+    except (ValueError, Exception):
+        return pic_path.name.replace("\\", "/").lstrip("/")
+
 def find_default_profile_picture(base_dir: Path) -> Optional[str]:
-    """Scan base_dir for standard profile picture names."""
-    candidates = [
-        "profile.jpg", "profile.jpeg", "profile.png", "profile.webp",
-        "avatar.jpg", "avatar.jpeg", "avatar.png", "avatar.webp",
-        "photo.jpg", "photo.jpeg", "photo.png", "photo.webp",
-        "headshot.jpg", "headshot.png", "headshot.jpeg", "headshot.webp"
+    """
+    Scan base_dir (and common asset subdirectories) case-insensitively
+    for profile images matching standard naming patterns or any image file.
+    """
+    valid_extensions = {".jpg", ".jpeg", ".png", ".webp", ".svg", ".gif", ".avif"}
+    
+    priority_keywords = [
+        "profile", "avatar", "headshot", "photo", "portrait",
+        "pozaprofil", "poza_profil", "poza-profil", "poza",
+        "picture", "me", "author", "user", "image"
     ]
-    for c in candidates:
-        target = base_dir / c
-        if target.exists():
-            return c
+    
+    search_dirs = [base_dir]
+    for sub in ["images", "assets", "img", "static"]:
+        subdir = base_dir / sub
+        if subdir.is_dir():
+            search_dirs.append(subdir)
+            
+    candidates: List[Tuple[int, Path]] = []
+    
+    for d in search_dirs:
+        try:
+            for item in d.iterdir():
+                if item.is_file() and item.suffix.lower() in valid_extensions:
+                    stem_lower = item.stem.lower().replace("_", "").replace("-", "").replace(" ", "")
+                    score = 100
+                    for idx, kw in enumerate(priority_keywords):
+                        kw_norm = kw.replace("_", "").replace("-", "")
+                        if stem_lower == kw_norm:
+                            score = idx
+                            break
+                        elif kw_norm in stem_lower:
+                            score = 20 + idx
+                            break
+                    candidates.append((score, item))
+        except Exception:
+            pass
+            
+    if candidates:
+        candidates.sort(key=lambda x: (x[0], len(x[1].name)))
+        best_path = candidates[0][1]
+        try:
+            rel = str(best_path.relative_to(base_dir)).replace("\\", "/").lstrip("/")
+            return rel
+        except ValueError:
+            return best_path.name
+
     return None
 
 def find_default_pdf(base_dir: Path, input_name: str) -> Optional[str]:
@@ -995,7 +1069,10 @@ def main():
     
     # Determine profile picture
     picture = args.picture
-    if not picture and not args.no_auto_picture:
+    if picture:
+        picture = normalize_picture_path(picture, base_dir)
+        print(f"[*] Using specified profile picture: '{picture}'")
+    elif not args.no_auto_picture:
         picture = find_default_profile_picture(base_dir)
         if picture:
             print(f"[*] Detected profile picture: '{picture}'")
