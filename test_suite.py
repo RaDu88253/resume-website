@@ -17,10 +17,43 @@ from build import (
     clean_latex_aux_files,
     check_pdf_staleness,
     find_default_profile_picture,
-    normalize_picture_path
+    normalize_picture_path,
+    replace_latex_accents
 )
 
 class TestResumeParser(unittest.TestCase):
+    def test_latex_accents_and_umlauts(self):
+        # Umlauts with different LaTeX syntaxes: {\"a}, {\"{a}}, \"{a}, \"a
+        self.assertEqual(latex_to_html(r'Christian-Albrechts-Universit{\"a}t zu Kiel'), 'Christian-Albrechts-Universität zu Kiel')
+        self.assertEqual(latex_to_html(r'Universit{\"{a}}t'), 'Universität')
+        self.assertEqual(latex_to_html(r'Universit\"{a}t'), 'Universität')
+        self.assertEqual(latex_to_html(r'Universit\"at'), 'Universität')
+
+        # Uppercase and other vowel umlauts
+        self.assertEqual(latex_to_html(r'{\"A} {\"O} {\"U}'), 'Ä Ö Ü')
+        self.assertEqual(latex_to_html(r'{\"a} {\"e} {\"i} {\"o} {\"u}'), 'ä ë ï ö ü')
+
+        # Other standard LaTeX accents and special characters
+        self.assertEqual(latex_to_html(r'Ren{\'e} Caovilla'), 'René Caovilla')
+        self.assertEqual(latex_to_html(r'Fran\c{c}ois'), 'François')
+        self.assertEqual(latex_to_html(r'{\c{c}} and \v{s} and {\ss}'), 'ç and š and ß')
+
+        # Integration test in education section
+        latex_doc = r"""
+        \documentclass{article}
+        \begin{document}
+        \section{Education}
+        \resumeSubHeadingListStart
+          \resumeSubheading
+            {Erasmus Exchange -- Christian-Albrechts-Universit{\"a}t zu Kiel}{Kiel, Germany}
+            {Exchange Semester}{Apr. 2026 -- Sep. 2026}
+        \resumeSubHeadingListEnd
+        \end{document}
+        """
+        data = parse_resume_latex(latex_doc)
+        sec = data["sections"][0]
+        self.assertEqual(sec["items"][0]["title"], "Erasmus Exchange &ndash; Christian-Albrechts-Universität zu Kiel")
+
     def test_strip_comments(self):
         latex = r"""
         Line 1 % comment

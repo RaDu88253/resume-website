@@ -17,6 +17,7 @@ import shutil
 import argparse
 import subprocess
 import urllib.parse
+import unicodedata
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 
@@ -217,6 +218,83 @@ def extract_n_braced_args(text: str, start_pos: int, n: int) -> Tuple[List[str],
         curr = next_curr
     return args, curr
 
+# LaTeX accent mapping to Unicode combining characters
+ACCENT_MAP = {
+    '"': '\u0308',  # Umlaut / diaeresis (\"{a} -> ä, {\"a} -> ä)
+    "'": '\u0301',  # Acute accent (\'{e} -> é)
+    "`": '\u0300',  # Grave accent (\`{e} -> è)
+    "^": '\u0302',  # Circumflex (\^{e} -> ê)
+    "~": '\u0303',  # Tilde (\~{n} -> ñ)
+    "=": '\u0304',  # Macron (\={a} -> ā)
+    ".": '\u0307',  # Dot above (\.{z} -> ż)
+    "c": '\u0327',  # Cedilla (\c{c} -> ç)
+    "v": '\u030c',  # Caron / hacek (\v{s} -> š)
+    "u": '\u0306',  # Breve (\u{a} -> ă)
+    "r": '\u030a',  # Ring above (\r{a} -> å)
+    "H": '\u030b',  # Double acute (\H{o} -> ő)
+    "k": '\u0328',  # Ogonek (\k{a} -> ą)
+    "d": '\u0323',  # Dot below (\d{m} -> ṃ)
+    "b": '\u0331',  # Bar below (\b{b} -> ḇ)
+}
+
+LATEX_SPECIAL_SYMBOLS = {
+    r'\ss': 'ß',
+    r'\SS': 'SS',
+    r'\ae': 'æ',
+    r'\AE': 'Æ',
+    r'\oe': 'œ',
+    r'\OE': 'Œ',
+    r'\aa': 'å',
+    r'\AA': 'Å',
+    r'\o': 'ø',
+    r'\O': 'Ø',
+    r'\l': 'ł',
+    r'\L': 'Ł',
+}
+
+def replace_latex_accents(s: str) -> str:
+    """Convert LaTeX accent commands (e.g. {\\"a}, \\"{a}, \\"a, {\\'e}, \\c{c}) to Unicode."""
+    if not s:
+        return ""
+
+    # 1. Standalone symbols and ligatures: {\ss}, \ss{}, \ss, {\ae}, etc.
+    for cmd, sym in LATEX_SPECIAL_SYMBOLS.items():
+        s = re.sub(r'\{' + re.escape(cmd) + r'\}', sym, s)
+        s = re.sub(re.escape(cmd) + r'(?:\{\}|\b)', sym, s)
+
+    def _replace_match(cmd: str, char_arg: str) -> str:
+        if not char_arg:
+            return ""
+        if char_arg.startswith('\\'):
+            char_arg = 'i' if char_arg.lower() in (r'\i', r'\j') else char_arg[1:]
+        mark = ACCENT_MAP.get(cmd)
+        if mark:
+            return unicodedata.normalize('NFC', char_arg + mark)
+        return char_arg
+
+    def _braced_repl(m: re.Match) -> str:
+        cmd = m.group(1)
+        ch = m.group(2) or m.group(3)
+        return _replace_match(cmd, ch)
+
+    # 2. Outer braced with punctuation commands (\", \', \`, \^, \~, \=, \.):
+    # Matches {\"a}, {\"{a}}, {\'e}, {\'{\i}}, etc.
+    s = re.sub(r'\{\\([\"\'`^~=\.])\s*(?:\{([a-zA-Z]|\\[iIjJ])\}|([a-zA-Z]|\\[iIjJ]))\}', _braced_repl, s)
+
+    # 3. Outer braced with letter commands (\c, \v, \u, \r, \H, \k, \d, \b):
+    # Matches {\c{c}}, {\c c}, {\v{s}}, {\v s}, etc.
+    s = re.sub(r'\{\\([cvurHkdb])\s*(?:\{([a-zA-Z]|\\[iIjJ])\}|\s+([a-zA-Z]|\\[iIjJ]))\}', _braced_repl, s)
+
+    # 4. Unbraced punctuation commands:
+    # Matches \"{a}, \"a, \'{e}, \'e, etc.
+    s = re.sub(r'\\([\"\'`^~=\.])\s*(?:\{([a-zA-Z]|\\[iIjJ])\}|([a-zA-Z]))', _braced_repl, s)
+
+    # 5. Unbraced letter commands:
+    # Matches \c{c}, \c c, \v{s}, \v s, \u{a}, \u a, etc.
+    s = re.sub(r'\\([cvurHkdb])\s*(?:\{([a-zA-Z]|\\[iIjJ])\}|\s+([a-zA-Z]))', _braced_repl, s)
+
+    return s
+
 def latex_to_html(tex: str) -> str:
     """Convert LaTeX inline markup into clean, semantic HTML."""
     if not tex:
@@ -284,6 +362,9 @@ def latex_to_html(tex: str) -> str:
                     s = s[:start] + f'<{tag}{cls_attr}>{inner_html}</{tag}>' + s[end:]
                     changed = True
                     break
+
+    # Convert LaTeX accents & special characters to Unicode (e.g. {\"a} -> ä, \"{a} -> ä, \"a -> ä)
+    s = replace_latex_accents(s)
 
     # Handle special TeX symbols and escapes
     s = s.replace(r'\&', '&amp;')
