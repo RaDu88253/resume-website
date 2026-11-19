@@ -100,7 +100,7 @@
     % --- exchange semester entry: comment out if not relevant for a given application ---
     \resumeSubheading
       {Erasmus Exchange -- Christian-Albrechts-Universit{\"a}t zu Kiel}{Kiel, Germany}
-      {Exchange Semester, Electronics, Telecommunications and Information Technology}{Apr. 2026 -- Sep. 2026}
+      {Exchange Semester, Electronics, Telecommunications and Information Technology}{Apr. 2026 -- Aug. 2026}
   \resumeSubHeadingListEnd
 
 
@@ -109,41 +109,58 @@
 %-----------PROJECTS-----------
 \section{Projects}
     \resumeSubHeadingListStart
+  
+      % \resumeProjectHeading
+      %     {\textbf{Easy Resume} $|$ \emph{Python, HTML/CSS, GitHub Actions}}{Aug. 2026}
+      % \resumeItemListStart
+      %   \resumeItem{Built a Python script that parses a LaTeX master resume and renders it into a responsive web interface.}
+      %   \resumeItem{Configured a GitHub Actions pipeline to automatically test and deploy the rendered resume site on every push.}
+      %   \resumeItem{Maintained a single LaTeX source with conditional sections to generate role-specific resume versions without duplicating content.}
+      % \resumeItemListEnd
     
       \resumeProjectHeading
           {\textbf{PyTorch American Sign Language Alphabet Reader} $|$ \emph{Python, PyTorch, Git}}{Jan. 2026}
       \resumeItemListStart
-        \resumeItem{Used PyTorch and Mediapipe to build a model that can recognise specific hand signs from a live video feed.}
+        \resumeItem{Built a hand-sign recognition model using PyTorch and Mediapipe, reaching over 90\% accuracy on a live video feed.}
         \resumeItem{Generated, cleaned and refined training data using Mediapipe.}
       \resumeItemListEnd
 
       \resumeProjectHeading
-          {\textbf{Easy Resume} $|$ \emph{Python, HTML/CSS, GitHub Actions}}{Aug. 2026}
+          {\textbf{Biometric Parameter Monitor} $|$ \emph{esp32, WiFi, HTTP, Embedded C++}}{Jun. 2025}
       \resumeItemListStart
-        \resumeItem{Architected a CI/CD-driven build pipeline using Python and GitHub Actions to automatically parse, test, and deploy LaTeX resumes into responsive web interfaces.}
-        \resumeItem{Established a version-controlled "single source of truth" to eliminate manual formatting and rapidly generate role-specific resumes.}
+        \resumeItem{Built an ESP32-based biometric monitor that reads BPM and $SpO_2$ via an $I^{2}C$ sensor and transmits data to a remote server over WiFi using HTTP POST requests.}
+        \resumeItem{Buffered and averaged sets of 10 readings before transmission to filter sensor noise and reduce network overhead.}
       \resumeItemListEnd
 
       \resumeProjectHeading
-          {\textbf{Biometric Parameter Monitor} $|$ \emph{esp32, HTTP, Embedded C++}}{Jun. 2025}
+        {\textbf{STL Obfuscator} $|$ \emph{Python, Blender Python API}}{Mar. 2025}
       \resumeItemListStart
-        \resumeItem{Developed a systems that monitors bpm and $SpO_2$ over time using an $I^{2}C$ sensor and sends the aquired data to a remote server via HTTP.}
+        \resumeItem{Developed a key based data scrambler and unscrambler for 3D models.}
+        \resumeItem{Secured 3D model files against unauthorized reconstruction by requiring the correct key to reverse the scrambling process.}
       \resumeItemListEnd
 
       \resumeProjectHeading
-         {\textbf{FIRST Tech Challenge Robot Programming} $|$ \emph{Java, FTC SDK, Git}}{Nov. 2022 {\--} Apr. 2023}
+        {\textbf{Lithophane Generator} $|$ \emph{C, Doxygen, Git}}{Jan. 2025}
       \resumeItemListStart
-       \resumeItem{Programmed a robot for user controlled motion using Java and the FTC SDK, and used the Roadrunner library on top for autonomous motion.}
-      \resumeItemListEnd
-
-      \resumeProjectHeading
-          {\textbf{Animal Feeding Robot} $|$ \emph{Arduino Uno, Electronics, Embedded C++, 3D Modeling, 3D Printing}}{May. 2022}
-      \resumeItemListStart
-        \resumeItem{Designed, built and programmed a robot that automatically dispenses food at fixed intervals unsing a servo motor.}
-        \resumeItem{Used a capacitive touch sensor to manually dispense food and reset the timer, and an LCD display in order to make the timer visible to the user.}
+        \resumeItem{Developed a program that reads a raw .bmp file and creates an ASCII .stl 3D model of the image.}
+        \resumeItem{Supported customizable width, height, depth, and resolution parameters to control output model detail, yielding a 3D printable model.}
       \resumeItemListEnd
       
+      \resumeProjectHeading
+        {\textbf{FIRST Tech Challenge Robot Programming} $|$ \emph{Java, FTC SDK, Git}}{Nov. 2022 {\--} Apr. 2023}
+      \resumeItemListStart
+        \resumeItem{Programmed user-controlled robot motion using Java and the FTC SDK.}
+        \resumeItem{Implemented autonomous motion routines using the Roadrunner library.}
+        \resumeItem{Designed a finite state machine to model and control the behavior of the robot's subsystems.}
+      \resumeItemListEnd
 
+      \resumeProjectHeading
+        {\textbf{Animal Feeding Robot} $|$ \emph{Arduino Uno, Embedded C++, PrusaSlicer}}{May. 2022}
+      \resumeItemListStart
+        \resumeItem{Designed, built and programmed a robot that automatically dispenses food at fixed intervals using a servo motor.}
+        \resumeItem{Integrated a capacitive touch sensor for manual dispensing and timer resets, with an LCD display showing countdown status.}
+      \resumeItemListEnd
+      
     \resumeSubHeadingListEnd
 
 
@@ -151,19 +168,22 @@
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Programming}{: C/C++, Python, Java, Scripting, Testing, OOP} \\
-     \textbf{Embedded / Protocols}{: Arduino, esp32, Lingua Franca} \\
+     \textbf{Programming}{: C/C++, Python, Java, Scripting, Testing, OOP, DSA} \\
+     \textbf{Embedded}{: Arduino, esp32, Lingua Franca, Micro Processor Architecture} \\
      \textbf{Systems \& Infrastructure}{: 
-                                          Linux, 
-                                          Computer Networks, 
-                                          CI/CD, 
-                                          Embedded Systems
-                                       } \\
+        Computer Networks,
+        Embedded Systems,
+        Linux 
+      } \\
      \textbf{Tools}{: 
-                      Git, 
-                      Oscilloscope/Spectrum Analyzer, 
-                      Wireshark
-                    } \\
+        Git, 
+        Wireshark,
+        GDB,
+        Oscilloscope, 
+        Spectrum Analyzer,
+        LCR Meter,
+        Fiber Optic Splicer
+      } \\
      \textbf{Languages}{: Romanian, English} \\
      
      % \textbf{Other}{: add or comment out a category as needed}
@@ -175,37 +195,39 @@
 % Comment out this whole section if not needed
 \section{Awards \& Certifications}
   \resumeSubHeadingListStart
-  \resumeItem{\textbf{Regional Olympiad for Cyber Security} -- 1st place and qualification to national phase}
-    \resumeItem{\textbf{Regional Information and Communication Technology Olympiad - C\#} -- 1st place}
-    \resumeItem{\textbf{”Tudor Tănăsescu” Electronics Contest - Signals, Circuits \& Systems} -- mention}
-    \resumeItem{\textbf{PIA Hunt powered by Vodafone} -- 3rd place}
-    \resumeItem{\textbf{NASA Space Apps Challenge} -- 2nd place}
-    % \resumeItem{\textbf{FIRST Tech Challenge national phase} -- Think Award 2nd place}
+    \resumeProjectHeading{\textbf{8th IEEE Summer School on Antennas, Propagation and RFID Applications}}{Mar. 2026}
+    \resumeProjectHeading{\textbf{”Tudor Tănăsescu” Electronics Contest - Signals, Circuits \& Systems} -- Mention}{Mar. 2026}
+    \resumeProjectHeading{\textbf{Fiber Optic Splicing Training} -- Romanian Fiber Optic Association}{Feb. 2026}
+    \resumeProjectHeading{\textbf{HackITall 2025 Hackathon -- Stripe} -- Participation}{Dec. 2025}
+    \resumeProjectHeading{\textbf{Smarthack 2025 Hackathon -- Molson Coors} -- Participation}{Nov. 2025}
+    \resumeProjectHeading{\textbf{EPiC (Electric Vehicle Propulsion and Control) Summer School 2025} -- Participation}{Jun. 2025}
+    \resumeProjectHeading{\textbf{PIA Hunt powered by Vodafone} -- 3rd place}{Jun. 2025}
+    \resumeProjectHeading{\textbf{FIRST Tech Challenge National Phase} -- Think Award 2nd Place}{Apr. 2024}
+    \resumeProjectHeading{\textbf{Regional Olympiad for Cyber Security} -- 1st Place and Qualification to National Phase}{Mar. 2024}
+    \resumeProjectHeading{\textbf{Regional Information and Communication Technology Olympiad - C\#} -- 1st Place}{Mar. 2024}
+    \resumeProjectHeading{\textbf{NASA Space Apps Challenge} -- 2nd Place}{Oct. 2022}
     
-    
-    
-    % \resumeItem{Second award -- comment out individually as needed.}
   \resumeSubHeadingListEnd
 
 %-----------EXPERIENCE-----------
 \section{Experience}
   \resumeSubHeadingListStart
 
+  % ===== Experience entry 2 =====
+  \resumeSubheading
+    {Volunteer}{Bucharest, Romania}
+    {Climb Again}{Oct. 2025 -- present}
+  \resumeItemListStart
+    \resumeItem{Facilitate adaptive climbing therapy sessions for children with disabilities, ensuring a safe and supportive environment for physical development.}
+  \resumeItemListEnd
+
     % ===== Experience entry 1 =====
     \resumeSubheading
       {Volunteer Coordinator}{Bucharest, Romania}
       {The Color Run}{Jul. 2023 -- Sep. 2025}
-    \resumeItemListStart
-      \resumeItem{Led multiple teams of volunteers across multiple editions of the event, ensuring a smooth experience for the participants.}
-    \resumeItemListEnd
-
-    % ===== Experience entry 2 =====
-    \resumeSubheading
-      {Volunteer}{Bucharest, Romania}
-      {Climb Again}{Oct. 2025 -- present}
-    \resumeItemListStart
-      \resumeItem{Facilitated adaptive climbing therapy sessions for children with disabilities, ensuring a safe and supportive environment for physical development.}
-    \resumeItemListEnd
+    \resumeItemListStart  
+      \resumeItem{Led volunteer teams of up to 20 across 5 editions of the event, ensuring a smooth experience for participants.}
+    \resumeItemListEnd  
 
   \resumeSubHeadingListEnd
 

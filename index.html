@@ -69,7 +69,7 @@
                 <h3 class="entry-title">Erasmus Exchange &ndash; Christian-Albrechts-Universität zu Kiel</h3>
                 <div class="entry-subtitle">Exchange Semester, Electronics, Telecommunications and Information Technology</div>
             </div>
-            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Apr. 2026 &ndash; Sep. 2026</span></span>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Apr. 2026 &ndash; Aug. 2026</span></span>
             <span class="meta-badge loc-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>Kiel, Germany</span></span></div>
         </div>
         
@@ -94,22 +94,8 @@
         </div>
         <div class="tech-tags"><span class="tech-pill">Python</span><span class="tech-pill">PyTorch</span><span class="tech-pill">Git</span></div>
         <ul class="bullet-list">
-            <li>Used PyTorch and Mediapipe to build a model that can recognise specific hand signs from a live video feed.</li>
+            <li>Built a hand-sign recognition model using PyTorch and Mediapipe, reaching over 90% accuracy on a live video feed.</li>
             <li>Generated, cleaned and refined training data using Mediapipe.</li>
-        </ul>
-    </article>
-    <article class="entry-card project-card">
-        <div class="entry-header">
-            <div class="entry-title-box">
-                <h3 class="project-title"><strong>Easy Resume</strong></h3>
-                
-            </div>
-            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Aug. 2026</span></span></div>
-        </div>
-        <div class="tech-tags"><span class="tech-pill">Python</span><span class="tech-pill">HTML/CSS</span><span class="tech-pill">GitHub Actions</span></div>
-        <ul class="bullet-list">
-            <li>Architected a CI/CD-driven build pipeline using Python and GitHub Actions to automatically parse, test, and deploy LaTeX resumes into responsive web interfaces.</li>
-            <li>Established a version-controlled "single source of truth" to eliminate manual formatting and rapidly generate role-specific resumes.</li>
         </ul>
     </article>
     <article class="entry-card project-card">
@@ -120,9 +106,38 @@
             </div>
             <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Jun. 2025</span></span></div>
         </div>
-        <div class="tech-tags"><span class="tech-pill">esp32</span><span class="tech-pill">HTTP</span><span class="tech-pill">Embedded C++</span></div>
+        <div class="tech-tags"><span class="tech-pill">esp32</span><span class="tech-pill">WiFi</span><span class="tech-pill">HTTP</span><span class="tech-pill">Embedded C++</span></div>
         <ul class="bullet-list">
-            <li>Developed a systems that monitors bpm and $SpO_2$ over time using an $I^{2}C$ sensor and sends the aquired data to a remote server via HTTP.</li>
+            <li>Built an ESP32-based biometric monitor that reads BPM and $SpO_2$ via an $I^{2}C$ sensor and transmits data to a remote server over WiFi using HTTP POST requests.</li>
+            <li>Buffered and averaged sets of 10 readings before transmission to filter sensor noise and reduce network overhead.</li>
+        </ul>
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>STL Obfuscator</strong></h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Mar. 2025</span></span></div>
+        </div>
+        <div class="tech-tags"><span class="tech-pill">Python</span><span class="tech-pill">Blender Python API</span></div>
+        <ul class="bullet-list">
+            <li>Developed a key based data scrambler and unscrambler for 3D models.</li>
+            <li>Secured 3D model files against unauthorized reconstruction by requiring the correct key to reverse the scrambling process.</li>
+        </ul>
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>Lithophane Generator</strong></h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Jan. 2025</span></span></div>
+        </div>
+        <div class="tech-tags"><span class="tech-pill">C</span><span class="tech-pill">Doxygen</span><span class="tech-pill">Git</span></div>
+        <ul class="bullet-list">
+            <li>Developed a program that reads a raw .bmp file and creates an ASCII .stl 3D model of the image.</li>
+            <li>Supported customizable width, height, depth, and resolution parameters to control output model detail, yielding a 3D printable model.</li>
         </ul>
     </article>
     <article class="entry-card project-card">
@@ -135,7 +150,9 @@
         </div>
         <div class="tech-tags"><span class="tech-pill">Java</span><span class="tech-pill">FTC SDK</span><span class="tech-pill">Git</span></div>
         <ul class="bullet-list">
-            <li>Programmed a robot for user controlled motion using Java and the FTC SDK, and used the Roadrunner library on top for autonomous motion.</li>
+            <li>Programmed user-controlled robot motion using Java and the FTC SDK.</li>
+            <li>Implemented autonomous motion routines using the Roadrunner library.</li>
+            <li>Designed a finite state machine to model and control the behavior of the robot's subsystems.</li>
         </ul>
     </article>
     <article class="entry-card project-card">
@@ -146,10 +163,10 @@
             </div>
             <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>May. 2022</span></span></div>
         </div>
-        <div class="tech-tags"><span class="tech-pill">Arduino Uno</span><span class="tech-pill">Electronics</span><span class="tech-pill">Embedded C++</span><span class="tech-pill">3D Modeling</span><span class="tech-pill">3D Printing</span></div>
+        <div class="tech-tags"><span class="tech-pill">Arduino Uno</span><span class="tech-pill">Embedded C++</span><span class="tech-pill">PrusaSlicer</span></div>
         <ul class="bullet-list">
-            <li>Designed, built and programmed a robot that automatically dispenses food at fixed intervals unsing a servo motor.</li>
-            <li>Used a capacitive touch sensor to manually dispense food and reset the timer, and an LCD display in order to make the timer visible to the user.</li>
+            <li>Designed, built and programmed a robot that automatically dispenses food at fixed intervals using a servo motor.</li>
+            <li>Integrated a capacitive touch sensor for manual dispensing and timer resets, with an LCD display showing countdown status.</li>
         </ul>
     </article>
     </div>
@@ -172,28 +189,33 @@
             <span class="skill-tag">Scripting</span>
             <span class="skill-tag">Testing</span>
             <span class="skill-tag">OOP</span>
+            <span class="skill-tag">DSA</span>
             </div>
         </div><div class="skill-category-card">
-            <h3 class="skill-category-name">Embedded / Protocols</h3>
+            <h3 class="skill-category-name">Embedded</h3>
             <div class="skill-tags-group">
                 <span class="skill-tag">Arduino</span>
             <span class="skill-tag">esp32</span>
             <span class="skill-tag">Lingua Franca</span>
+            <span class="skill-tag">Micro Processor Architecture</span>
             </div>
         </div><div class="skill-category-card">
             <h3 class="skill-category-name">Systems &amp; Infrastructure</h3>
             <div class="skill-tags-group">
-                <span class="skill-tag">Linux</span>
-            <span class="skill-tag">Computer Networks</span>
-            <span class="skill-tag">CI/CD</span>
+                <span class="skill-tag">Computer Networks</span>
             <span class="skill-tag">Embedded Systems</span>
+            <span class="skill-tag">Linux</span>
             </div>
         </div><div class="skill-category-card">
             <h3 class="skill-category-name">Tools</h3>
             <div class="skill-tags-group">
                 <span class="skill-tag">Git</span>
-            <span class="skill-tag">Oscilloscope/Spectrum Analyzer</span>
             <span class="skill-tag">Wireshark</span>
+            <span class="skill-tag">GDB</span>
+            <span class="skill-tag">Oscilloscope</span>
+            <span class="skill-tag">Spectrum Analyzer</span>
+            <span class="skill-tag">LCR Meter</span>
+            <span class="skill-tag">Fiber Optic Splicer</span>
             </div>
         </div><div class="skill-category-card">
             <h3 class="skill-category-name">Languages</h3>
@@ -213,26 +235,127 @@
         <div class="section-line"></div>
     </div>
     <div class="section-body">
-        <div class="item-row">
-        <div class="item-bullet-icon">&bull;</div>
-        <div class="item-text"><strong>Regional Olympiad for Cyber Security</strong> &ndash; 1st place and qualification to national phase</div>
-    </div>
-    <div class="item-row">
-        <div class="item-bullet-icon">&bull;</div>
-        <div class="item-text"><strong>Regional Information and Communication Technology Olympiad - C#</strong> &ndash; 1st place</div>
-    </div>
-    <div class="item-row">
-        <div class="item-bullet-icon">&bull;</div>
-        <div class="item-text"><strong>”Tudor Tănăsescu” Electronics Contest - Signals, Circuits &amp; Systems</strong> &ndash; mention</div>
-    </div>
-    <div class="item-row">
-        <div class="item-bullet-icon">&bull;</div>
-        <div class="item-text"><strong>PIA Hunt powered by Vodafone</strong> &ndash; 3rd place</div>
-    </div>
-    <div class="item-row">
-        <div class="item-bullet-icon">&bull;</div>
-        <div class="item-text"><strong>NASA Space Apps Challenge</strong> &ndash; 2nd place</div>
-    </div>
+        <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>8th IEEE Summer School on Antennas, Propagation and RFID Applications</strong></h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Mar. 2026</span></span></div>
+        </div>
+        
+        
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>”Tudor Tănăsescu” Electronics Contest - Signals, Circuits &amp; Systems</strong> &ndash; Mention</h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Mar. 2026</span></span></div>
+        </div>
+        
+        
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>Fiber Optic Splicing Training</strong> &ndash; Romanian Fiber Optic Association</h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Feb. 2026</span></span></div>
+        </div>
+        
+        
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>HackITall 2025 Hackathon &ndash; Stripe</strong> &ndash; Participation</h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Dec. 2025</span></span></div>
+        </div>
+        
+        
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>Smarthack 2025 Hackathon &ndash; Molson Coors</strong> &ndash; Participation</h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Nov. 2025</span></span></div>
+        </div>
+        
+        
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>EPiC (Electric Vehicle Propulsion and Control) Summer School 2025</strong> &ndash; Participation</h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Jun. 2025</span></span></div>
+        </div>
+        
+        
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>PIA Hunt powered by Vodafone</strong> &ndash; 3rd place</h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Jun. 2025</span></span></div>
+        </div>
+        
+        
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>FIRST Tech Challenge National Phase</strong> &ndash; Think Award 2nd Place</h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Apr. 2024</span></span></div>
+        </div>
+        
+        
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>Regional Olympiad for Cyber Security</strong> &ndash; 1st Place and Qualification to National Phase</h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Mar. 2024</span></span></div>
+        </div>
+        
+        
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>Regional Information and Communication Technology Olympiad - C#</strong> &ndash; 1st Place</h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Mar. 2024</span></span></div>
+        </div>
+        
+        
+    </article>
+    <article class="entry-card project-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="project-title"><strong>NASA Space Apps Challenge</strong> &ndash; 2nd Place</h3>
+                
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Oct. 2022</span></span></div>
+        </div>
+        
+        
+    </article>
     </div>
 </section>
 
@@ -246,19 +369,6 @@
         <article class="entry-card subheading-card">
         <div class="entry-header">
             <div class="entry-title-box">
-                <h3 class="entry-title">Volunteer Coordinator</h3>
-                <div class="entry-subtitle">The Color Run</div>
-            </div>
-            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Jul. 2023 &ndash; Sep. 2025</span></span>
-            <span class="meta-badge loc-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>Bucharest, Romania</span></span></div>
-        </div>
-        <ul class="bullet-list">
-            <li>Led multiple teams of volunteers across multiple editions of the event, ensuring a smooth experience for the participants.</li>
-        </ul>
-    </article>
-    <article class="entry-card subheading-card">
-        <div class="entry-header">
-            <div class="entry-title-box">
                 <h3 class="entry-title">Volunteer</h3>
                 <div class="entry-subtitle">Climb Again</div>
             </div>
@@ -266,7 +376,20 @@
             <span class="meta-badge loc-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>Bucharest, Romania</span></span></div>
         </div>
         <ul class="bullet-list">
-            <li>Facilitated adaptive climbing therapy sessions for children with disabilities, ensuring a safe and supportive environment for physical development.</li>
+            <li>Facilitate adaptive climbing therapy sessions for children with disabilities, ensuring a safe and supportive environment for physical development.</li>
+        </ul>
+    </article>
+    <article class="entry-card subheading-card">
+        <div class="entry-header">
+            <div class="entry-title-box">
+                <h3 class="entry-title">Volunteer Coordinator</h3>
+                <div class="entry-subtitle">The Color Run</div>
+            </div>
+            <div class="entry-meta-box"><span class="meta-badge date-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg><span>Jul. 2023 &ndash; Sep. 2025</span></span>
+            <span class="meta-badge loc-badge"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>Bucharest, Romania</span></span></div>
+        </div>
+        <ul class="bullet-list">
+            <li>Led volunteer teams of up to 20 across 5 editions of the event, ensuring a smooth experience for participants.</li>
         </ul>
     </article>
     </div>

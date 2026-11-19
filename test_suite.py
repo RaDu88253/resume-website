@@ -18,7 +18,8 @@ from build import (
     check_pdf_staleness,
     find_default_profile_picture,
     normalize_picture_path,
-    replace_latex_accents
+    replace_latex_accents,
+    copy_master_resume
 )
 
 class TestResumeParser(unittest.TestCase):
@@ -278,6 +279,25 @@ class TestResumeParser(unittest.TestCase):
                 copied = normalize_picture_path(str(ext_file), base)
                 self.assertEqual(copied, "external.jpg")
                 self.assertTrue((base / "external.jpg").exists())
+
+    def test_copy_master_resume(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            base = Path(temp_dir)
+            master_file = base / "resume.tex"
+            master_file.write_text(r"\documentclass{article} Master Content", encoding="utf-8")
+            
+            # Copy to default Radu_Pirvu.tex
+            target = copy_master_resume(master_file, "Radu_Pirvu.tex")
+            self.assertIsNotNone(target)
+            self.assertTrue(target.exists())
+            self.assertEqual(target.name, "Radu_Pirvu.tex")
+            self.assertEqual(target.read_text(encoding="utf-8"), master_file.read_text(encoding="utf-8"))
+            
+            # Calling when target is the same file returns None (does not overwrite itself)
+            self.assertIsNone(copy_master_resume(target, "Radu_Pirvu.tex"))
+            
+            # Calling on non-existent file returns None
+            self.assertIsNone(copy_master_resume(base / "nonexistent.tex", "Radu_Pirvu.tex"))
 
 if __name__ == "__main__":
     unittest.main()

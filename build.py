@@ -146,6 +146,32 @@ def check_pdf_staleness(tex_path: Path, pdf_path: Optional[Path]) -> None:
     except Exception:
         pass
 
+def copy_master_resume(input_path: Path, target_name: str = "Radu_Pirvu.tex") -> Optional[Path]:
+    """
+    Copies the master resume LaTeX file to a working copy (e.g. Radu_Pirvu.tex)
+    so that the master resume (resume.tex) is preserved while tailored CVs
+    can be customized separately.
+    """
+    if not input_path.exists():
+        return None
+        
+    target_path = input_path.parent / target_name
+    # Do not overwrite if the user is explicitly building the target file
+    try:
+        if input_path.resolve() == target_path.resolve():
+            return None
+    except Exception:
+        if input_path.name == target_name:
+            return None
+
+    try:
+        shutil.copy2(input_path, target_path)
+        print(f"[*] Copied '{input_path.name}' to '{target_name}'")
+        return target_path
+    except Exception as e:
+        print(f"[!] Warning: Could not copy '{input_path.name}' to '{target_name}': {e}", file=sys.stderr)
+        return None
+
 def strip_latex_comments(latex_text: str) -> str:
     """Strip LaTeX comments while respecting escaped percent signs (\\%)."""
     result = []
@@ -1126,6 +1152,11 @@ def main():
         default=None,
         help="Custom HTML page title."
     )
+    parser.add_argument(
+        "--copy-to",
+        default="Radu_Pirvu.tex",
+        help="Copy master LaTeX resume to a working copy for tailored CVs (default: Radu_Pirvu.tex, set to '' to disable)."
+    )
     
     args = parser.parse_args()
     
@@ -1135,6 +1166,10 @@ def main():
         sys.exit(1)
         
     base_dir = input_path.parent
+    
+    # Copy master resume to working copy (Radu_Pirvu.tex) for tailored CVs
+    if args.copy_to and (input_path.name == "resume.tex" or args.copy_to != "Radu_Pirvu.tex"):
+        copy_master_resume(input_path, args.copy_to)
     
     # Check for pdflatex and compile PDF automatically if available
     pdf_compiled_path, was_compiled = check_and_compile_pdf(input_path, skip_pdf=args.no_pdf_compile)
